@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apprentice extends Model
 {
-    public function curse()
+    public function course()
     {
-       return $this->belongsTo('App\Models\Curse');//metodo de laravel
+       return $this->belongsTo('App\Models\Course');//metodo de laravel
     }
 
     public function computer()

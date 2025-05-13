@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->String('course number');
+            $table->String('course_number');
             $table->String('day');
             $table->String('name');
 
-            $table->unsignedBigInteger('course_id')->nullable();
-            $table->unsignedBigInteger('teacher_id')->nullable();
+            $table->unsignedBigInteger('area_id')->nullable();
+            $table->unsignedBigInteger('training_center_id')->nullable();
 
-            $table->foreign('course_id')
+            $table->foreign('area_id')
             ->references('id')
-            ->on('courses')->onDelete('cascade');
+            ->on('areas')->onDelete('cascade');
 
-            $table->foreign('teacher_id')
+            $table->foreign('training_center_id')
             ->references('id')
-            ->on('teachers')->onDelete('cascade');
+            ->on('training_centers')->onDelete('cascade');
 
             $table->timestamps();
         });

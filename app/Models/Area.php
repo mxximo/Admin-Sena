@@ -11,8 +11,8 @@ class Area extends Model
        return $this->hasMany('App\Models\Teacher');
     }
 
-    public function curses()
+    public function courses()
     {
-       return $this->hasMany('App\Models\Curse');
+       return $this->hasMany('App\Models\Course');
     }
 }

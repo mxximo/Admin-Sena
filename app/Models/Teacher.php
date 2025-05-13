@@ -11,13 +11,13 @@ class Teacher extends Model
        return $this->belongsTo('App\Models\area');//metodo de laravel
     }
 
-    public function tradingcenter()
+    public function trainingcenter()
     {
-       return $this->belongsTo('App\Models\Tradingcenter');
+       return $this->belongsTo('App\Models\TrainingCenter');
     }
 
-    public function curses()
+    public function courses()
     {
-       return $this->belongsToMany('App\Models\Curse');//metodo de laravel
+       return $this->belongsToMany('App\Models\Course');//metodo de laravel
     }
 }

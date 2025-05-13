@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TradingCenter extends Model
+class TrainingCenter extends Model
 {
     public function teachers()
     {
@@ -13,6 +13,6 @@ class TradingCenter extends Model
 
     public function curses()
     {
-       return $this->hasMany('App\Models\Curse');
+       return $this->hasMany('App\Models\Course');
     }
 }

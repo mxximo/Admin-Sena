@@ -16,9 +16,9 @@ class Course extends Model
        return $this->belongsTo('App\Models\area');//metodo de laravel
     }
 
-    public function tradingcenter()
+    public function trainingcenter()
     {
-       return $this->belongsTo('App\Models\Tradingcenter');
+       return $this->belongsTo('App\Models\TrainingCenter');
     }
 
     public function apprentices()

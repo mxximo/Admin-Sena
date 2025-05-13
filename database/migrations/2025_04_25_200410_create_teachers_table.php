@@ -18,15 +18,15 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('area_id')->nullable();
-            $table->unsignedBigInteger('trading_center_id')->nullable();
+            $table->unsignedBigInteger('training_center_id')->nullable();
 
             $table->foreign('area_id')
                 ->references('id')
                 ->on('areas')->onDelete('set null');
 
-            $table->foreign('trading_center_id')
+            $table->foreign('training_center_id')
             ->references('id')
-            ->on('trading_centers')->onDelete('set null');
+            ->on('training_centers')->onDelete('set null');
 
         });
     }
