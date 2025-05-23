@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->String('course_number');
             $table->String('day');
-            $table->String('name');
 
             $table->unsignedBigInteger('area_id')->nullable();
             $table->unsignedBigInteger('training_center_id')->nullable();

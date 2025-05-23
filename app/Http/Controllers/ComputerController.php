@@ -22,12 +22,12 @@ class ComputerController extends Controller
 
     public function store(Request $request){
 
-        $computers = new Computer();
+        $computer = new Computer();
 
-        $computers->number=$request->number;
-        $computers->brand = $request->brand;
+        $computer->number=$request->number;
+        $computer->brand = $request->brand;
 
-        $computers->save();
+        $computer->save();
 
         return $computers;
 

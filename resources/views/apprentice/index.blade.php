@@ -4,5 +4,5 @@
 
 <h1>Tus datos..</h1>
 
-    {{$computers}}
+    {{$apprentice}}
 @endsection

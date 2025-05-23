@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->String('name');
             $table->String('email');
-            $table->String('cell number');
+            $table->String('cell_number');
 
             $table->unsignedBigInteger('course_id')->nullable();
             $table->unsignedBigInteger('computer_id')->nullable();

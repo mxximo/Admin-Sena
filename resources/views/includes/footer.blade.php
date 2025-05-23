@@ -1,0 +1,1 @@
+<p>MENSAJE DESDE EL FOOTER</p>
