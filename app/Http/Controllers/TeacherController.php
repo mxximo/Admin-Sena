@@ -2,34 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Area;
 use App\Models\Teacher;
+use App\Models\TrainingCenter;
+use Illuminate\Http\Request;
+
 class TeacherController extends Controller
 {
-        public function index(){
+    public function index()  {
+        $teachers=Teacher::all();
 
-        $teachers = Teacher::all();
-
-        return view('teacher.index', compact('teachers'));
-
+        return view('teacher.index',compact('teachers'));
     }
 
-    public function create() {
+    public function create()  {
+        $areas = Area::all();
+        $trainingCenters = TrainingCenter::all();
 
-        return view('teacher.create');
-
+        return view('teacher.create',compact('areas', 'trainingCenters'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)  {
+        $teacher=Teacher::create($request->all());
 
-        $teacher = new Teacher();
+        return redirect()->route('teacher.index');
+    }
 
-        $teacher->name=$request->name;
-         $teacher->email = $request->email;
+    public function show(Teacher $teacher) {
+        return view('teacher.show',compact('teacher'));
+    }
 
-        $teacher->save();
+    public function update(Request $request,Teacher $teacher) {
 
-        return $teacher;
+        $teacher->update($request->all());
 
+        return redirect()->route('teacher.index');
+
+    }
+    public function edit(Teacher $teacher) {
+        return view('teacher.edit',compact('teacher'));
+    }
+
+    public function destroy(Teacher $teacher) {
+        $teacher->delete();
+
+        return redirect()->route('teacher.index');
     }
 }

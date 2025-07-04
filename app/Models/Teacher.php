@@ -6,18 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
-    public function area()
-    {
-       return $this->belongsTo('App\Models\area');//metodo de laravel
+    //
+    public function courses() {
+        return $this->belongsToMany(course::class);
+    }
+    public function area(){
+        return $this->belongsTo(Area::class);
+    }
+    public function trainingCenter(){
+        return $this->belongsTo(TrainingCenter::class);
     }
 
-    public function trainingcenter()
-    {
-       return $this->belongsTo('App\Models\TrainingCenter');
-    }
-
-    public function courses()
-    {
-       return $this->belongsToMany('App\Models\Course');//metodo de laravel
-    }
+    protected $fillable=['name','email','area_id','trainingCenter_id'];
 }

@@ -2,34 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\TrainingCenter;
+use GuzzleHttp\Promise\Create;
+use Illuminate\Http\Request;
+
 class TrainingCenterController extends Controller
 {
-    public function index(){
+    public function index()  {
+        $trainingCenters=TrainingCenter::all();
 
-        $training_centers = TrainingCenter::all();
-
-        return view('training_center.index', compact('training_centers'));
-
+        return view('training_centers.index',compact('trainingCenters'));
     }
 
-    public function create() {
-
-        return view('training_center.create');
-
+    public function create()  {
+        return view('training_centers.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)  {
+        $trainingCenter=TrainingCenter::create($request->all());
 
-        $training_centers = new TrainingCenter();
-
-        $training_centers->name=$request->name;
-        $training_centers->location = $request->location;
-
-        $training_centers->save();
-
-        return $training_centers;
+        return redirect()->route('training_center.index');
 
     }
+    public function show($id)  {
+        $trainingCenter=TrainingCenter::find($id);
+
+        return view('training_centers.show',compact('trainingCenter'));
+    }
+
+    public function update(Request $request,TrainingCenter $trainingCenter) {
+         $trainingCenter->update($request->all());
+
+         return redirect()->route('training_center.index');
+    }
+
+    public function edit(TrainingCenter $trainingCenter){
+        return view('training_centers.edit', compact('trainingCenter'));
+    }
+
+    public function destroy(TrainingCenter $trainingCenter){
+        $trainingCenter->delete();
+
+        return redirect()->route('training_center.index');
+    }
+
 }

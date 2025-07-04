@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use function Laravel\Prompts\table;
+
 return new class extends Migration
 {
     /**
@@ -13,21 +15,22 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->String('name');
-            $table->String('email');
-            $table->timestamps();
+            $table->string('name');
+            $table->string('email');
 
             $table->unsignedBigInteger('area_id')->nullable();
-            $table->unsignedBigInteger('training_center_id')->nullable();
-
             $table->foreign('area_id')
                 ->references('id')
-                ->on('areas')->onDelete('set null');
+                ->on('areas')
+                ->onDelete('set null');
 
-            $table->foreign('training_center_id')
-            ->references('id')
-            ->on('training_centers')->onDelete('set null');
+            $table->unsignedBigInteger('TrainingCenter_id')->nullable();
+            $table->foreign('trainingCenter_id')
+                ->references('id')
+                ->on('training_centers')
+                ->onDelete('set null');
 
+            $table->timestamps();
         });
     }
 

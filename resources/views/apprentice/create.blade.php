@@ -1,25 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Formulario Category</h1>
+
+<div class="container mt-4">
+    <h1>Formulario Category</h1>
 
     <br>
 
     <form action="{{ route('apprentice.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <label for="name">Name:</label>
+        <div class="mb-3">
+            <label for="name">Name:</label>
         <input type="text" id="name" name="name">
+        </div>
         <br>
 
-        <label for="email">Email:</label>
+       <div class="mb-3">
+         <label for="email">Email:</label>
         <input type="text" id="email" name="email">
+       </div>
 
         <br>
-         <label for="cell_number">Cell_number:</label>
+        <div class="mb-3">
+             <label for="cell_number">Cell_number:</label>
         <input type="text" id="cell_number" name="cell_number">
+        </div>
         <br>
         <button type="submit" class="btn btn-outline-success mb-4">Crear</button>
     </form>
+</div>
 
     @endsection
+
+    

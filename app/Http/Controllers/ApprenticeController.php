@@ -2,35 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\apprentice;
+use App\Models\Computer;
+use App\Models\course;
 use Illuminate\Http\Request;
-use App\Models\Apprentice;
+
 class ApprenticeController extends Controller
 {
-     public function index(){
+    public function index()  {
 
-        $apprentices = Apprentice::all();
+        $apprentices= apprentice::all();
 
-        return view('apprentice.index', compact('apprentices'));
+        return view('Apprentice.index',compact('apprentices'));
 
     }
 
-    public function create() {
+    public function create()  {
+        $courses=course::all();
+        $computers=Computer::all();
 
-        return view('apprentice.create');
+        return view('apprentice.create',compact('courses','computers'));
 
     }
 
     public function store(Request $request){
 
-        $apprentice = new Apprentice();
 
-        $apprentice->name = $request->name;
-         $apprentice->email = $request->email;
-         $apprentice->cell_number = $request->cell_number;
+        $apprentice=apprentice::create($request->all());
 
-        $apprentice->save();
+        return redirect()->route('apprentice.index');
 
-        return $apprentice;
+    }
+    public function show(Apprentice $apprentice) {
+        return view('apprentice.show',compact('apprentice'));
+    }
+    public function edit(Apprentice $apprentice) {
+        $courses=course::all();
+        $computers=Computer::all();
 
+        return view('apprentice.edit', compact('apprentice','courses','computers'));
+    }
+    public function update(Request $request, Apprentice $apprentice) {
+
+        $apprentice->update($request->all());
+
+        return redirect()->route('apprentice.index');
+    }
+    public function destroy(Apprentice $apprentice) {
+
+        $apprentice->delete();
+
+        return redirect()->route('apprentice.index');
     }
 }

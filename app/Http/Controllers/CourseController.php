@@ -2,34 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
+use App\Models\course;
+use App\Models\TrainingCenter;
 use Illuminate\Http\Request;
-use App\Models\Course;
+
 class CourseController extends Controller
 {
-        public function index(){
+    public function index() {
+        $courses=course::all();
 
-        $courses = Course::all();
-
-        return view('course.index', compact('courses'));
-
+        return view('courses.index',compact('courses'));
     }
 
-    public function create() {
+    public function create()  {
+        $areas=Area::all();
+        $trainingCenters=TrainingCenter::all();
 
-        return view('course.create');
 
+        return view('courses.create',compact('areas','trainingCenters'));
     }
 
     public function store(Request $request){
+        $course=course::create($request->all());
 
-        $course = new Course();
-
-        $course->course_number = $request->course_number;
-         $course->day = $request->day;
-
-        $course->save();
-
-        return $course;
+        return redirect()->route('course.index');
 
     }
+    public function show(course $course) {
+        return view('courses.show', compact('course'));
+    }
+    public function edit(course $course) {
+        $areas=Area::all();
+        $traningCenters=TrainingCenter::all();
+
+        return view('courses.edit', compact('course','areas','trainingCenters'));
+    }
+    public function update(Request $request, course $course) {
+        $course->update($request->all());
+
+        return redirect()->route('course.index');
+    }
+    public function destroy(course $course) {
+        $course->delete();
+
+        return redirect()->route('course.index');
+    }
+
+
 }

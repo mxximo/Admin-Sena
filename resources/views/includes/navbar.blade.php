@@ -1,18 +1,18 @@
 <nav>
-    <a href="{{route('area.create')}}">formulario de area</a> | <a href="{{route('area.index')}}">index de area</a>
+    <h1>Create</h1>
+    <a href="{{ route('area.create') }}" class="btn btn-outline-success mb-4">Area</a>  
+    <a href="{{ route('computer.create') }}" class="btn btn-outline-success mb-4 ">computer</a>
+    <a href="{{ route('training_center.create') }}" class="btn btn-outline-success mb-4 ">training_center</a>
+    <a href="{{ route('teacher.create') }}" class="btn btn-outline-success mb-4 ">teacher</a>
+    <a href="{{ route('course.create') }}" class="btn btn-outline-success mb-4 ">course</a>
+    <a href="{{ route('apprentice.create') }}" class="btn btn-outline-success mb-4 ">apprentice</a>
 </nav>
 <nav>
-    <a href="{{route('computer.create')}}">formulario de computer</a> | <a href="{{route('computer.index')}}">index de computer</a>
-</nav>
-<nav>
-    <a href="{{route('training_center.create')}}">formulario de training_center</a> | <a href="{{route('training_center.index')}}">index de training_center</a>
-</nav>
-<nav>
-    <a href="{{route('teacher.create')}}">formulario de teacher</a> | <a href="{{route('teacher.index')}}">index de teacher</a>
-</nav>
-<nav>
-    <a href="{{route('course.create')}}">formulario de course</a> | <a href="{{route('course.index')}}">index de course</a>
-</nav>
-<nav>
-    <a href="{{route('apprentice.create')}}">formulario de apprentice</a> | <a href="{{route('apprentice.index')}}">index de apprentice</a>
+    <h1>Index</h1>
+    <a href="{{ route('area.index') }}" class="btn btn-outline-success mb-4 ">Area</a>
+    <a href="{{ route('computer.index') }}" class="btn btn-outline-success mb-4 ">computer</a>
+    <a href="{{ route('training_center.index') }}" class="btn btn-outline-success mb-4 ">training_center</a>
+    <a href="{{ route('teacher.index') }}" class="btn btn-outline-success mb-4 ">teacher</a>
+    <a href="{{ route('course.index') }}" class="btn btn-outline-success mb-4 ">course</a>
+    <a href="{{ route('apprentice.index') }}" class="btn btn-outline-success mb-4 ">apprentice</a>
 </nav>

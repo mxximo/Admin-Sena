@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Formulario Category</h1>
+<div class="container mt-5">
+    <h1>Formulario Computer</h1>
 
     <br>
 
@@ -18,5 +19,6 @@
         <br>
         <button type="submit" class="btn btn-outline-success mb-4">Crear</button>
     </form>
+</div>
 
     @endsection
